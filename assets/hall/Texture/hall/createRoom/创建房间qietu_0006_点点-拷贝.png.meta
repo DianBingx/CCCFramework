@@ -1,0 +1,30 @@
+{
+  "ver": "1.0.0",
+  "uuid": "a93e1f41-809e-4c91-8887-3c0c3e911e7f",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "subMetas": {
+    "创建房间qietu_0006_点点-拷贝": {
+      "ver": "1.0.3",
+      "uuid": "9a40525d-2c07-446e-ad30-4fa802d35347",
+      "rawTextureUuid": "a93e1f41-809e-4c91-8887-3c0c3e911e7f",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 33,
+      "height": 36,
+      "rawWidth": 33,
+      "rawHeight": 36,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}
