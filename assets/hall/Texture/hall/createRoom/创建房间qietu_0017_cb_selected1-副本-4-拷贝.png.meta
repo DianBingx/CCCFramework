@@ -1,9 +1,10 @@
 {
-  "ver": "1.0.0",
+  "ver": "2.2.0",
   "uuid": "6179ca94-f7f5-4650-93b3-01d06f570146",
   "type": "sprite",
   "wrapMode": "clamp",
   "filterMode": "bilinear",
+  "premultiplyAlpha": false,
   "subMetas": {
     "创建房间qietu_0017_cb_selected1-副本-4-拷贝": {
       "ver": "1.0.3",
