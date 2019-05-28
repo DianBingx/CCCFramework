@@ -19,11 +19,11 @@ export default class HallScene extends UIComponent {
     init() {
     }
 
-    onCreateRoomTouchStart() {
+    _onCreateRoomTouchStart() {
         console.log("创建房间");
     }
 
-    onAddRoomTouchStart() {
+    _onAddRoomTouchStart() {
         console.log("加入房间");
     }
 

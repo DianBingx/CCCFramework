@@ -3,8 +3,32 @@
 const { ccclass, property } = cc._decorator;
 import { UIComponent } from "../../Utils/UIKiller/UIComponent";
 
+const gameTables = {
+    0: 'gameNum',
+    1: 'gamePlayer',
+    2: 'gameOptional',
+    3: 'gameWanfa',
+    4: 'gameZhuaniao',
+    5: 'gameFengding',
+    6: 'gameTuoguan',
+    7: 'gameLiankai',
+    8: 'gameHupaiTip',
+}
+
 @ccclass
 export default class NewClass extends UIComponent {
+
+    @property([cc.Node])
+    gameTable: cc.Node;
+
+    @property([cc.Node])
+    gameContent: cc.Node;
+
+    @property([cc.Node])
+    gameItem: cc.Node;
+
+    @property([cc.SpriteFrame])
+    toggleSpriteFrame: cc.SpriteFrame[] = [];
 
     protected CacheGuidePath: string = "cacheGuide"
 
@@ -12,22 +36,48 @@ export default class NewClass extends UIComponent {
         this.init();
     }
 
-    // [[
-    //     选项对照：1：8局， 2：16局， 3：自摸胡，4：点炮胡（可抢杠胡），5：庄闲（算分），6：可胡七对，7：红中赖子，8：抓2鸟，9：抓4鸟，10：抓6鸟，11：带风，12：可以吃，13：庄闲翻倍，14：抓2鸟（翻倍）15：3人长沙，16：4人，17：3人，18：2人，19：红中，20：飘，21：金鸟，22：抢杠胡奖码，23：荒庄荒杠，24：奖2码，25：奖4码，26：奖6码，27：159奖码，28：摸几奖几，29：杠随胡，30：上王，31：下王，32：上下王，33：选2美，34：选3美，35：选4美，36：报听，37：门清，38：门清碰碰胡（可接炮），39：抓鸟，40：飞鸟， 41：48番， 42：96番 43：4连冠 44:王霸牌 45:窝窝鸟, 46:六六顺， 47：缺一色，48：板板胡，49：大四喜，50：节节高，51：三同，52：一枝花，53：中途四喜，54：中鸟加分（1鸟1分），55：中鸟翻倍，56：将将胡（必须自摸），57：清一色可吃，58：单鸟（倍），59：不扎鸟
-    // ]]
-
     init() {
         let data = {
             '1': {
-                'gameNum': 'gameNumItem_|1:2',
-                'gamePlayer': 'gamePlayerItem_|18:16',
-                'gameOptional': 'gameOptionalItem_|5:20',
-                'gameWanfa': 'gameWanfaItem_|46:47:48:49:50:52:53:70:73:69:51',
-                'gameZhuaniao': 'gameZhuaniaoItem_|54:55:8:9:10',
-                'gameFengding': 'gameFengdingItem_|54',
-                'gameTuoguan': 'gameTuoguanItem_|1000:1001:1002',
-                'gameLiankai': 'gameLiankaiItem_|3000:3001:3002:3003',
-                'gameHupaiTip': 'gameHupaiTipItem_|2000',
+                'gameNum': 'gameNumItem_|0|1:2',
+                'gamePlayer': 'gamePlayerItem_|0|18:16',
+                'gameOptional': 'gameOptionalItem_|0|5:20',
+                'gameWanfa': 'gameWanfaItem_|0|46:47:48:49:50:52:53:70:73:69:51',
+                'gameZhuaniao': 'gameZhuaniaoItem_|0|54:55:8:9:10',
+                'gameFengding': 'gameFengdingItem_|0|54',
+                'gameTuoguan': 'gameTuoguanItem_|0|1000:1001:1002',
+                'gameLiankai': 'gameLiankaiItem_|0|3000:3001:3002:3003',
+                'gameHupaiTip': 'gameHupaiTipItem_|0|2000',
+            }
+        }
+        this.instantiateTable(data);
+    }
+
+    //data  
+    instantiateTable(data) {
+        console.log(data[1]);
+        for (let n = 0; n < 9; n++) {
+            if (data[gameTables[n]]) {
+                let gameNum = cc.instantiate(this.gameContent);
+                gameNum.name = gameTables[n];
+                this.gameTable.addChild(gameNum);
+                let tb = data[gameTables[n]].split('|');
+                let tbWanfa = tb[2].split(':');
+                for (let i = 0; i < tbWanfa.length; i++) {
+                    let gameItem = cc.instantiate(this.gameItem);
+                    gameItem.name = tb[0] + tbWanfa[i];
+                    gameNum.addChild(gameItem);
+                    let toggle = gameItem.getChildByName('toggle');
+                    let toggleSprite = toggle.getComponent(cc.Sprite);
+                    if(tb[1] == 0){
+                        toggleSprite.spriteFrame = this.toggleSpriteFrame[0];
+                    }else{
+                        toggleSprite.spriteFrame = this.toggleSpriteFrame[1];
+                    }
+                    let wanfaLabel = gameItem.getChildByName('wanfaLabel');
+                    let Label = wanfaLabel.getComponent(cc.Label);
+                    // Label.string = 
+                }
             }
         }
     }
