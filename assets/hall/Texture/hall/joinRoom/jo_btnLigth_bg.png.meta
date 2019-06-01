@@ -1,9 +1,10 @@
 {
-  "ver": "1.0.0",
+  "ver": "2.2.0",
   "uuid": "dcdb1bd2-39a9-4f3f-9f46-ed68723c267f",
   "type": "sprite",
   "wrapMode": "clamp",
   "filterMode": "bilinear",
+  "premultiplyAlpha": false,
   "subMetas": {
     "jo_btnLigth_bg": {
       "ver": "1.0.3",
